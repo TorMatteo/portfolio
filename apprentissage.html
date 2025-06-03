@@ -6,6 +6,7 @@
     <title>Portfolio</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <link href="CSS/style.css" rel="stylesheet">
 </head>
 <body>
 <nav class="navbar navbar-expand-lg bg-body-tertiary">
@@ -20,7 +21,7 @@
                     <a class="nav-link active" aria-current="page" href="monProfil.html">A propros de moi</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link active" href="apprentissage.html">Portfolio d'apprentissage</a>
+                    <a class="nav-link active" href="apprentissage.html">Apprentissage</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -43,7 +44,289 @@
 </nav>
 
 <div class="container">
+    <section class="mb-5" id="admin">
+        <h2 class="text-primary">Compétence : Administrer</h2>
+        <h3 class="text-secondary">Niveau 2 : Déployer des services dans une architecture réseau</h3>
 
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 1 : Concevoir et développer des applications communicantes</h4>
+            <p><strong>CE3.02 :</strong> en offrant une qualité de service optimale</p>
+            <p>Au début de semestre 3, j'ai réalisé en C deux programmes pouvant communiquer entre eux.</p>
+            <details>
+                <summary>Voir le code du programme Serveur</summary>
+                <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;sys/types.h&gt;
+
+#define PORT 12345
+#define BUFFER_SIZE 80
+
+int main() {
+    int sock, client_sock, lg;
+    char mess[BUFFER_SIZE];
+    struct sockaddr_in local, distant;
+
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+
+    memset(&local, 0, sizeof(local));
+    local.sin_family = AF_INET;
+    local.sin_port = htons(PORT);
+    local.sin_addr.s_addr = INADDR_ANY;
+
+    if (bind(sock, (struct sockaddr *)&local, sizeof(local)) == -1) {
+        perror("bind");
+        exit(EXIT_FAILURE);
+    }
+
+    if (listen(sock, 5) == -1) {
+        perror("listen");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Serveur en écoute sur le port %d...\n", PORT);
+
+    while (1) {
+        lg = sizeof(distant);
+        if ((client_sock = accept(sock, (struct sockaddr *)&distant, &lg)) == -1) {
+            perror("accept");
+            exit(EXIT_FAILURE);
+        }
+        printf("Client connecté.\n");
+        if (fork() == 0) {
+            close(sock);
+            while (1) {
+                memset(mess, 0, BUFFER_SIZE);
+                int n = read(client_sock, mess, BUFFER_SIZE - 1);
+                if (n <= 0) break;
+                printf("Client : %s\n", mess);
+                if (strncmp(mess, "fin", 3) == 0) break;
+            }
+            close(client_sock);
+            printf("Client déconnecté.\n");
+            exit(0);
+        }
+        close(client_sock);
+    }
+    close(sock);
+    return 0;
+}</code></pre>
+            </details>
+            <details>
+                <summary>Voir le code du programme Client</summary>
+                <pre><code>#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;string.h&gt;
+#include &lt;unistd.h&gt;
+#include &lt;errno.h&gt;
+#include &lt;netinet/in.h&gt;
+#include &lt;sys/socket.h&gt;
+#include &lt;sys/types.h&gt;
+#include &lt;arpa/inet.h&gt;
+
+#define PORT 12345
+#define BUFFER_SIZE 80
+
+int main() {
+    int sock;
+    struct sockaddr_in serv_addr;
+    char mess[BUFFER_SIZE];
+
+    if ((sock = socket(AF_INET, SOCK_STREAM, 0)) == -1) {
+        perror("socket");
+        exit(EXIT_FAILURE);
+    }
+
+    memset(&serv_addr, 0, sizeof(serv_addr));
+    serv_addr.sin_family = AF_INET;
+    serv_addr.sin_port = htons(PORT);
+    serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
+
+    if (connect(sock, (struct sockaddr *)&serv_addr, sizeof(serv_addr)) == -1) {
+        perror("connect");
+        exit(EXIT_FAILURE);
+    }
+
+    printf("Connecté au serveur. Tapez 'fin' pour quitter.\n");
+
+    while (1) {
+        printf("Vous : ");
+        fgets(mess, BUFFER_SIZE, stdin);
+        mess[strcspn(mess, "\n")] = '\0';
+
+        if (write(sock, mess, strlen(mess)) == -1) {
+            perror("write");
+            break;
+        }
+
+        if (strncmp(mess, "fin", 3) == 0) break;
+    }
+
+    close(sock);
+    return 0;
+}</code></pre>
+            </details>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 2 : Utiliser des serveurs et des services réseaux virtualisés</h4>
+            <p><strong>CE3.03 :</strong> en appliquant les normes en vigueur et les bonnes pratiques architecturales et
+                de sécurité</p>
+            <p> Lors de la SAE du semestre 4 et aussi durant les cours j'ai virtualisé un serveur apache, et une base de
+                données
+                afin
+                de pouvoir déployer du code en quelques commandes.</p>
+            <a href="CSS/images/Administrer/docker.png" target="_blank">Voir l'image Docker</a>
+        </div>
+    </section>
+
+
+    <section class="mb-5" id="gerer">
+        <h2 class="text-primary">Compétence : Gérer</h2>
+        <h3 class="text-secondary">Niveau 2 : Optimiser une base de données, interagir avec une application et mettre en
+            œuvre la sécurité</h3>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 1 : Optimiser les modèles de données de l’entreprise</h4>
+            <p><strong>CE4.03 :</strong> en s’appuyant sur des bases mathématiques</p>
+            <p>J’ai appliqué les formes normales jusqu’à la 3FN pour améliorer l’organisation des données dans la SAE du
+                semestre 4.</p>
+            <a href="https://docs.google.com/document/d/1wAqvmWpNG9FjpswwZuDCB9KPa9qI5BRqYZMjUcESZI8/edit?usp=sharing"
+               target="_blank">Voir la lien de l'analyse</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 2 : Assurer la confidentialité des données (intégrité et sécurité)</h4>
+            <p><strong>CE4.01 :</strong> en respectant les réglementations sur la protection des données personnelles
+            </p>
+            <p> Une page a été dédié sur le réglement général sur la protection des données et sur les conditions
+                générales
+                d'utilisation lors de la SAE du semestre 3</p>
+            <a href="CSS/images/Gerer/cgu.png" target="_blank">Image RGPD et CGU</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 3 : Organiser la restitution de données à travers la programmation et la visualisation</h4>
+            <p><strong>CE4.02 :</strong> en assurant la cohérence et la qualité</p>
+            <p>J’ai développé un graphique comparant la note d’un élève et la moyenne de la classe lors de la SAE du
+                semestre 3.</p>
+            <a href="CSS/images/Gerer/graphe.png" target="_blank">Voir le graphique</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 4 : Manipuler des données hétérogènes</h4>
+            <p><strong>CE4.02 :</strong> en respectant les enjeux économiques, sociétaux et écologiques</p>
+            <p>Durant la SAE du semestre 3 j'ai manipulé des fichiers CSV, en faisant les commandes optimales pour à la
+                fois
+                insérer
+                les données qu'une seule fois pour ne générer de la redodance et éviter de trop consommer en ressource.
+            </p>
+            <details>
+                <summary>Voir le code des CSV</summary>
+                <pre><code> public static function insererPstage($ligne): void
+    {
+        $login = $ligne[2];
+        $login .= $ligne[3][0]; //surement à changer si un étudiant a le même nom et le même prenom
+        $login = strtolower($login);
+        $etudiant = new Etudiant($ligne[1], $ligne[3], $ligne[2], $login, $ligne[42], $ligne[7], $ligne[6], $ligne[5], "XX", "XXXXX", 1, 1, 1);
+        (new EtudiantRepository())->creerObjet($etudiant);
+
+        $idVille = 0;
+        $villeVerif = (new VilleRepository())->getVilleParNom2($ligne[33]);
+        if(!$villeVerif) {
+            $listeVille = (new VilleRepository())->getListeObjet();
+
+            if (!is_null($listeVille)) {
+                $idVille = (sizeof($listeVille) + 1);
+            }
+            $ville = new Ville($idVille, $ligne[60], $ligne[59]);
+            (new VilleRepository())->creerObjet($ville);
+        }else{
+           $idVille = $villeVerif->getIdVille();
+        }
+
+        $entreprise = new Entreprise($ligne[55], $ligne[54], $ligne[62], null, $ligne[65], $ligne[66], $ligne[57], strval($idVille), 0, "", "", "", "", 1, "");
+        (new EntrepriseRepository())->creerObjet($entreprise);
+
+        $loginProf = $ligne[29];
+        $loginProf .= $ligne[30][0];
+        $prof = new Prof($loginProf, $ligne[29], $ligne[30], $ligne[31], 0, 1);
+        (new ProfRepository())->creerObjet($prof);
+
+        $tuteurliste = (new TuteurProRepository())->getListeObjet();
+        $idTuteur = "TP" . (is_null($tuteurliste) ? 0 : sizeof($tuteurliste)) + 1;
+        $tuteur = new TuteurPro($idTuteur, $ligne[79], $ligne[80], $ligne[81], $ligne[77], $ligne[78], $ligne[55]);
+        (new TuteurProRepository())->creerObjet($tuteur);
+
+        $formation = new Formation(null, "", $ligne[13], $ligne[14], $ligne[18], $ligne[19], null, $ligne[23],(int) $ligne[25], $ligne[26], null, $ligne[24], 1, "", null, "Stage", 3, 2, 1, 1, null, $ligne[48], $ligne[51], "", "", "", $ligne[50], $ligne[1], $idTuteur, $ligne[55], $loginProf, 1);
+        (new FormationRepository())->creerObjet($formation);
+
+        $form = (new FormationRepository())->trouverOffreDepuisForm($ligne[1]);
+        $postuler = new Postuler($ligne[1], $form->getIdFormation(), "Validée", "", "");
+        (new PostulerRepository())->creerObjet($postuler);
+    }</code></pre>
+            </details>
+        </div>
+    </section>
+
+    <section class="mb-5" id="conduire">
+        <h2 class="text-primary">Compétence : Conduire</h2>
+        <h3 class="text-secondary">Niveau 2 : Appliquer une démarche de suivi de projet en fonction des besoins métiers
+            des clients et des utilisateurs</h3>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 1 : Identifier les processus présents dans une organisation en vue d’améliorer les
+                systèmes d’information</h4>
+            <p><strong>CE5.04 :</strong> En adoptant une démarche proactive, critique et créative</p>
+            <p> Durant les cours de management lors du semestre 4, nous avons étudier les SI d'entreprise et nous avons
+                exposé notre
+                point de vue
+                en exposant des critiques consctructifs sur ce qui n'allait pas.</p>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 2 : Formaliser les besoins du client et de l'utilisateur</h4>
+            <p><strong>CE5.01 :</strong> En communiquant efficacement avec les acteurs</p>
+            <p> Sur la SAE du semestre 3, nous avons recueilli les besoins du client et nous les avons transformé en
+                équipe, en une
+                liste
+                de fonctionnalités à implémenter pour satisfaire le client</p>
+            <a href="CSS/images/Conduire/issue.png" target="_blank">Liste de features</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4> AC 3 : Identifier les critères de faisabilité d’un projet informatique</h4>
+            <p><strong>CE5.01 :</strong> En communiquant efficacement avec les acteurs</p>
+            <p> Toujours sur la SAE du semestre 3, en faisant la liste des fonctionnalités à remplir, nous avons pris en
+                compte
+                la difficulté des ces dernières, en attribuant un poids (plus le poids est haut, plus la fonctionnalité
+                est longue
+                ou compliqué à réaliser).</p>
+            <a href="CSS/images/Conduire/poids.png" target="_blank">Poids</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 4 : Définir et mettre en œuvre une démarche de suivi de projet</h4>
+            <p><strong>CE5.03 :</strong> en sensibilisant à une gestion éthique, responsable et durable</p>
+            <p> Encore une fois dans la SAE du semestre 3, nous avons utilisé une méthode pour travailler en groupe,
+                SCRUM, scrum
+                permet
+                de réaliser un projet de façon itératif incrémental, c'est à dire que pendant 2 ou 3 semaines, nous
+                travaillons sur
+                le projet avant
+                de faire un compte rendu au client. Durant ces 2, 3 semaines, nous utilisons un git ou un trello pour
+                pouvoir lister
+                les tâches et les répartir
+                équitablement entre les membres du groupe.</p>
+        </div>
+    </section>
 </div>
 
 
