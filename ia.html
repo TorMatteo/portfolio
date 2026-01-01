@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Portfolio</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+</head>
+<body>
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+    <div class="container-fluid">
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="monProfil.html">A propos de moi</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="apprentissage.html">Apprentissage</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <a class="nav-link active dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                       aria-expanded="false">
+                        Mes projets
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li><a class="dropdown-item" href="formatiut.html">FormatIUT</a></li>
+                        <li><a class="dropdown-item" href="penguin.html">ThePenguinIceFloe</a></li>
+                        <li><a class="dropdown-item" href="rail.html">Les aventuriers du rail</a></li>
+                        <li><a class="dropdown-item" href="phproject.html">PH project</a></li>
+                        <li><a class="dropdown-item" href="myavatar.html"> MyAvatar </a></li>
+                        <li><a class="dropdown-item" href="ia.html"> Projet IA</a></li>
+                        <li><a class="dropdown-item" href="stage.html"> Stage </a></li>
+                    </ul>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" href="contact.html">Contact</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div class="container">
+    <p>En 3ème année, lorsque nous sommes en formation initiale, nous devons une réalisé une SAE qui se déroule sur
+        plusieurs mois.
+        C'est ainsi qu'en groupe de 7 étudiants, nous travaillons sur un projet qui concerne l'IA, plus précisement l'apprentissage par renforcement.
+        Personnellement, sur le projet j'ai appris à utiliser Gymnasium, une API pour l'apprentissage per renforcement en python,
+        puis
+        j'ai codé des programmes pouvant calculer un MRP (Processus de Récompense de Markov) et un MDP (Processus de
+        Décision de Markov).
+        Enfin j'ai complété un rapport à l'aide de mon groupe qui pourra être
+        potentiellement utilisé dans les prochaines années pour les nouveaux étudiants
+    </p>
+
+    <p>Voici un extrait de code (en python) illustrant l'implémentation des équations de Bellman :  </p>
+    <pre><code>
+import numpy as np
+
+# --- FORMULE : V = (I - gamma * P)^-1 * R ---
+# p : matrice de transition
+# r : récompenses immédiates
+# i : matrice identité
+def bellman_vector_form(p, r, gamma):
+    i = np.eye(len(p))
+    # Résolution matricielle
+    v = np.linalg.inv(i - gamma * p).dot(r)
+    return v
+
+# --- FORMULE : V(s) = R(s) + gamma * Σ(P(s,s') * V(s')) ---
+def bellman_recursive_form(p, r, gamma):
+    v = np.zeros_like(r)
+    convergence = 0.0000001
+
+    # Itération jusqu'à convergence
+    for _ in range(10000):
+        v2 = r + gamma * p.dot(v)
+        if np.max(np.abs(v2 - v)) < convergence:
+            break
+        v = v2
+    return v
+
+# --- JEU DE DONNÉES TEST ---
+P = np.array([[0.7, 0.3],
+              [0.4, 0.6]])
+R = np.array([5.0, 10.0]) # Flottants pour éviter les erreurs de type
+gamma = 0.9
+
+# Exécution
+V_vec = bellman_vector_form(P, R, gamma)
+print(f"V (Vectoriel) = {V_vec}")
+
+V_rec = bellman_recursive_form(P, R, gamma)
+print(f"V (Récursif)  = {V_rec}")
+    </code></pre>
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
+        crossorigin="anonymous"></script>
+</body>
+<footer class="text-center mt-5 mb-4">
+
+</footer>
+</html>
