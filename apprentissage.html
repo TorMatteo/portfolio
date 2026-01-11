@@ -34,7 +34,7 @@
                         <li><a class="dropdown-item" href="rail.html">Les aventuriers du rail</a></li>
                         <li><a class="dropdown-item" href="phproject.html">PH project</a></li>
                         <li><a class="dropdown-item" href="myavatar.html"> MyAvatar </a></li>
-                        <li><a class="dropdown-item" href="ia.html"> Projet IA</a> </li>
+                        <li><a class="dropdown-item" href="ia.html"> Projet IA</a></li>
                         <li><a class="dropdown-item" href="stage.html"> Stage </a></li>
                     </ul>
                 </li>
@@ -186,7 +186,7 @@ int main() {
                 données
                 afin
                 de pouvoir déployer du code en quelques commandes.</p>
-            <a href="CSS/images/Administrer/docker.png" target="_blank">Voir l'image Docker</a>
+            <a href="CSS/images/Administrer/docker.png" target="_blank" class="btn btn-sm btn-primary">Voir l'image Docker</a>
         </div>
     </section>
 
@@ -202,7 +202,7 @@ int main() {
             <p>J’ai appliqué les formes normales jusqu’à la 3FN pour améliorer l’organisation des données dans la SAE du
                 semestre 4.</p>
             <a href="https://docs.google.com/document/d/1wAqvmWpNG9FjpswwZuDCB9KPa9qI5BRqYZMjUcESZI8/edit?usp=sharing"
-               target="_blank">Voir la lien de l'analyse</a>
+               target="_blank" class="btn btn-sm btn-primary">Voir la lien de l'analyse</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
@@ -212,7 +212,7 @@ int main() {
             <p> Une page a été dédié sur le réglement général sur la protection des données et sur les conditions
                 générales
                 d'utilisation lors de la SAE du semestre 3</p>
-            <a href="CSS/images/Gerer/cgu.png" target="_blank">Image RGPD et CGU</a>
+            <a href="CSS/images/Gerer/cgu.png" target="_blank" class="btn btn-sm btn-primary">Image RGPD et CGU</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
@@ -220,7 +220,7 @@ int main() {
             <p><strong>CE4.02 :</strong> en assurant la cohérence et la qualité</p>
             <p>J’ai développé un graphique comparant la note d’un élève et la moyenne de la classe lors de la SAE du
                 semestre 3.</p>
-            <a href="CSS/images/Gerer/graphe.png" target="_blank">Voir le graphique</a>
+            <a href="CSS/images/Gerer/graphe.png" target="_blank" class="btn btn-sm btn-primary">Voir le graphique</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
@@ -301,7 +301,7 @@ int main() {
                 équipe, en une
                 liste
                 de fonctionnalités à implémenter pour satisfaire le client</p>
-            <a href="CSS/images/Conduire/issue.png" target="_blank">Liste de features</a>
+            <a href="CSS/images/Conduire/issue.png" target="_blank" class="btn btn-sm btn-primary">Liste de features</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
@@ -312,7 +312,7 @@ int main() {
                 la difficulté des ces dernières, en attribuant un poids (plus le poids est haut, plus la fonctionnalité
                 est longue
                 ou compliqué à réaliser).</p>
-            <a href="CSS/images/Conduire/poids.png" target="_blank">Poids</a>
+            <a href="CSS/images/Conduire/poids.png" target="_blank" class="btn btn-sm btn-primary">Poids</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
@@ -328,6 +328,70 @@ int main() {
                 pouvoir lister
                 les tâches et les répartir
                 équitablement entre les membres du groupe.</p>
+        </div>
+    </section>
+    <section class="mb-5" id="realiser-n3">
+        <h2 class="text-primary">Compétence : Réaliser</h2>
+        <h3 class="text-secondary">Niveau 3 : Adapter des applications sur un ensemble de supports</h3>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 31.02 : Faire évoluer une application existante</h4>
+            <p><strong>CE1.04 :</strong> En veillant à la qualité du code et à sa documentation</p>
+            <p>
+                Durant mon stage au CIHEAM, j'ai réalisé la migration majeure d'une application codé en PHP 5.1.
+                j'ai refait la structure du code pour implémenter une architecture MVC structurée, facilitant les évolutions futures.
+            </p>
+            <a href="stage.html"  class="btn btn-sm btn-primary" target="_blank">Voir les détails du Stage</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 31.03 : Intégrer des solutions dans un environnement de production</h4>
+            <p><strong>CE1.06 :</strong> En choisissant les ressources techniques appropriées</p>
+            <p>
+                J'ai assuré le déploiement de la nouvelle version du site sur les serveurs de l'institut.
+                Cela a impliqué la configuration de l'environnement PHP 8.3 et la vérification de la compatibilité avec la base de données de production.
+            </p>
+            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir le contexte technique</a>
+        </div>
+    </section>
+
+    <section class="mb-5" id="optimiser-n3">
+        <h2 class="text-primary">Compétence : Optimiser</h2>
+        <h3 class="text-secondary">Niveau 3 : Analyser et optimiser des applications</h3>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 32.02 : Profiler, analyser et justifier le comportement d’un code existant</h4>
+            <p><strong>CE2.04 :</strong> En justifiant les choix et validant les résultats</p>
+            <p>
+                Lors de mon stage, j'ai audité le code obsolète pour identifier des failles critiques.
+                J'ai analysé les requêtes SQL vulnérables aux injections et j'ai justifié la réécriture du code par des requêtes préparées (PDO) pour sécuriser l'application.
+            </p>
+            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir l'audit de sécurité</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 32.01 : Anticiper les résultats de diverses métriques</h4>
+            <p><strong>CE2.01 :</strong> En formalisant et modélisant des situations complexes</p>
+            <p>
+                Dans le cadre de mon projet d'IA (Apprentissage par Renforcement), j'ai utilisé des calculs de MDP
+                et de MRP pour anticiper les gains futurs d'un agent intelligent et vérifier la convergence des algorithmes de Bellman.
+            </p>
+            <a href="ia.html" class="btn btn-sm btn-primary" target="_blank">Voir le projet IA</a>
+        </div>
+    </section>
+
+    <section class="mb-5" id="collaborer-n3">
+        <h2 class="text-primary">Compétence : Collaborer</h2>
+        <h3 class="text-secondary">Niveau 3 : Manager une équipe informatique</h3>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 36.04 : Accompagner le management de projet informatique</h4>
+            <p><strong>CE6.04 :</strong> En développant une communication efficace et collaborative</p>
+            <p>
+                Durant mon stage, j'ai participé activement aux réunions de pilotage avec mon maître de stage et le client final.
+                J'ai dû rendre compte de l'avancement de la migration et expliquer les choix techniques (refonte MVC) à des interlocuteurs non-développeurs.
+            </p>
+            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir le déroulement du stage</a>
         </div>
     </section>
 </div>
