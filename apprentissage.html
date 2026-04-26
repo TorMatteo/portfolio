@@ -34,6 +34,7 @@
                         <li><a class="dropdown-item" href="rail.html">Les aventuriers du rail</a></li>
                         <li><a class="dropdown-item" href="phproject.html">PH project</a></li>
                         <li><a class="dropdown-item" href="myavatar.html"> MyAvatar </a></li>
+                        <li><a class="dropdown-item" href="animeCritik.html"> AnimeCritik </a></li>
                         <li><a class="dropdown-item" href="ia.html"> Projet IA</a></li>
                         <li><a class="dropdown-item" href="stage.html"> Stage </a></li>
                     </ul>
@@ -186,7 +187,8 @@ int main() {
                 données
                 afin
                 de pouvoir déployer du code en quelques commandes.</p>
-            <a href="CSS/images/Administrer/docker.png" target="_blank" class="btn btn-sm btn-primary">Voir l'image Docker</a>
+            <a href="CSS/images/Administrer/docker.png" target="_blank" class="btn btn-sm btn-primary">Voir l'image
+                Docker</a>
         </div>
     </section>
 
@@ -335,23 +337,38 @@ int main() {
         <h3 class="text-secondary">Niveau 3 : Adapter des applications sur un ensemble de supports</h3>
 
         <div class="mb-4 p-3 border rounded bg-light">
-            <h4>AC 31.02 : Faire évoluer une application existante</h4>
+            <h4>AC 31.01 : Choisir et implémenter les architectures adaptées</h4>
             <p><strong>CE1.04 :</strong> En veillant à la qualité du code et à sa documentation</p>
             <p>
-                Durant mon stage au CIHEAM, j'ai réalisé la migration majeure d'une application codé en PHP 5.1.
-                j'ai refait la structure du code pour implémenter une architecture MVC structurée, facilitant les évolutions futures.
+                Durant la SAE de deuxième année, nous avons implémenter une architecture MVC pour structurer le code
+                afin de séparer la logique
+                métier, l'interface utilisateur et le contrôle des données, facilitant ainsi la maintenance et
+                l'évolutivité du projet.
+
             </p>
-            <a href="stage.html"  class="btn btn-sm btn-primary" target="_blank">Voir les détails du Stage</a>
+            <a href="phproject.html" class="btn btn-sm btn-primary" target="_blank">Voir les détails du Stage</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 31.02 : Faire évoluer une application existante</h4>
+            <p><strong>CE1.01 :</strong> En respectant les besoins décrits par le client</p>
+            <p>
+                Durant mon stage au CIHEAM, j'ai réalisé la migration majeure d'une application codé en PHP 5.1 puis
+                j'ai refait la structure du code pour implémenter une architecture afin de mieux organiser le code. Tout
+                en respectant
+                les besoins du client qui ont été d'avoir une application sous PHP 8.3 et de corriger les bugs
+                existants.
+            </p>
+            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir les détails du Stage</a>
         </div>
 
         <div class="mb-4 p-3 border rounded bg-light">
             <h4>AC 31.03 : Intégrer des solutions dans un environnement de production</h4>
             <p><strong>CE1.06 :</strong> En choisissant les ressources techniques appropriées</p>
             <p>
-                J'ai assuré le déploiement de la nouvelle version du site sur les serveurs de l'institut.
-                Cela a impliqué la configuration de l'environnement PHP 8.3 et la vérification de la compatibilité avec la base de données de production.
+                Lors de ce projet, on a pu déployer l'API et son interface sur les serveurs de l'IUT en utilisant SFTP.
             </p>
-            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir le contexte technique</a>
+            <a href="animeCritik.html" class="btn btn-sm btn-primary" target="_blank">Voir le contexte technique</a>
         </div>
     </section>
 
@@ -360,21 +377,34 @@ int main() {
         <h3 class="text-secondary">Niveau 3 : Analyser et optimiser des applications</h3>
 
         <div class="mb-4 p-3 border rounded bg-light">
-            <h4>AC 32.02 : Profiler, analyser et justifier le comportement d’un code existant</h4>
-            <p><strong>CE2.04 :</strong> En justifiant les choix et validant les résultats</p>
-            <p>
-                Lors de mon stage, j'ai audité le code obsolète pour identifier des failles critiques.
-                J'ai analysé les requêtes SQL vulnérables aux injections et j'ai justifié la réécriture du code par des requêtes préparées (PDO) pour sécuriser l'application.
-            </p>
-            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir l'audit de sécurité</a>
-        </div>
-
-        <div class="mb-4 p-3 border rounded bg-light">
             <h4>AC 32.01 : Anticiper les résultats de diverses métriques</h4>
             <p><strong>CE2.01 :</strong> En formalisant et modélisant des situations complexes</p>
             <p>
                 Dans le cadre de mon projet d'IA (Apprentissage par Renforcement), j'ai utilisé des calculs de MDP
-                et de MRP pour anticiper les gains futurs d'un agent intelligent et vérifier la convergence des algorithmes de Bellman.
+                et de MRP pour anticiper les gains futurs d'un agent intelligent et vérifier la convergence des
+                algorithmes de Bellman.
+            </p>
+            <a href="ia.html" class="btn btn-sm btn-primary" target="_blank">Voir le projet IA</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 32.02 : Profiler, analyser et justifier le comportement d’un code existant</h4>
+            <p><strong>CE2.04 :</strong> En justifiant les choix et validant les résultats</p>
+            <p>
+                Lors de mon stage, j'ai audité le code obsolète pour identifier des failles critiques.
+                J'ai analysé les requêtes SQL vulnérables aux injections et j'ai justifié la réécriture du code par des
+                requêtes préparées (PDO) pour sécuriser l'application.
+            </p>
+            <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir le stage</a>
+        </div>
+
+        <div class="mb-4 p-3 border rounded bg-light">
+            <h4>AC 32.03 : Choisir et utiliser des bibliothèques et méthodes dédiées au domaine d'application</h4>
+            <p><strong>CE2.03 :</strong> En s’appuyant sur des schémas de raisonnement</p>
+            <p>
+                Lors de la SAE de troisième année où notre sujet concernait l'apprentissage par renforcement,
+                nous avons utilisé Gymnasium, une librairie pour simuler une IA dans un environnement de jeu et en utilisant des algorithmes
+                adaptés pour évaluer leur efficacité et leur vitesse de convergence vers une solution optimale.
             </p>
             <a href="ia.html" class="btn btn-sm btn-primary" target="_blank">Voir le projet IA</a>
         </div>
@@ -384,12 +414,16 @@ int main() {
         <h2 class="text-primary">Compétence : Collaborer</h2>
         <h3 class="text-secondary">Niveau 3 : Manager une équipe informatique</h3>
 
+
+
         <div class="mb-4 p-3 border rounded bg-light">
             <h4>AC 36.04 : Accompagner le management de projet informatique</h4>
             <p><strong>CE6.04 :</strong> En développant une communication efficace et collaborative</p>
             <p>
-                Durant mon stage, j'ai participé activement aux réunions de pilotage avec mon maître de stage et le client final.
-                J'ai dû rendre compte de l'avancement de la migration et expliquer les choix techniques (refonte MVC) à des interlocuteurs non-développeurs.
+                Durant mon stage, j'ai participé activement aux réunions de pilotage avec mon maître de stage et le
+                client final.
+                J'ai dû rendre compte de l'avancement de la migration et expliquer les choix techniques (refonte MVC) à
+                des interlocuteurs non-développeurs.
             </p>
             <a href="stage.html" class="btn btn-sm btn-primary" target="_blank">Voir le déroulement du stage</a>
         </div>
